@@ -1,0 +1,84 @@
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>TeahHome智能家居系统</title>
+    </head>
+	<body topmargin="200"    bgcolor="#00FFFF">
+	<head>
+		<title>
+			video
+		</title>
+        <script>
+            var on =0;
+			function RefreshImg()
+            {
+                if(on){
+                var xmlhttp;
+				var url = "/?action=snapshot" + new Date().getTime();
+				var img = document.getElementById("img");
+                img.src = url;
+                setTimeout("RefreshImg()", 200);
+                }
+            }
+            function Start()
+            {
+                on = 1;
+                RefreshImg();
+                document.getElementById("Start").disabled=true;
+                document.getElementById("Stop").disabled=false;
+            }
+            function Stop()
+            {
+                on = 0;
+                RefreshImg();
+                document.getElementById("Start").disabled=false;
+                document.getElementById("Stop").disabled=true;
+
+            }
+			function sendcmd(cmd) {
+                                 var xmlhttp;
+
+                                if (window.XMLHttpRequest) {
+                                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                                        xmlhttp=new XMLHttpRequest();
+                                } else {
+                                        // code for IE6, IE5
+                                        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                                }
+
+                                xmlhttp.onreadystatechange = function() {
+                                        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                                                // document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+                                        }
+                                }
+
+                                var argv = cmd;
+                                xmlhttp.open("POST","/index.html?cmd",true);
+                                xmlhttp.send(argv);
+                        }
+
+		</script>
+	</head>
+	<h1 align="center"> <font color="#3300CC">TeahHome智能家居系统 </font></h1> <br>
+    <h2 align="center"> <font color="#3300CC">web监控界面 </font></h2> <br>
+	<body>
+		<center>
+		<img name="img" id="img" src="/?action=snapshot"/>
+        <br />
+
+		<input type="button" value="led on" onclick="sendcmd('led=on')"/>
+        <input type="button" value="led off" onclick="sendcmd('led=off')"/>
+        <input type="button" value="fan on" onclick="sendcmd('fan=on')"/>
+        <input type="button" value="fan off" onclick="sendcmd('fan=off')"/>
+        <input type="button" value="pwm on" onclick="sendcmd('pwm=on')"/>
+        <input type="button" value="pwm off" onclick="sendcmd('pwm=off')"/>
+
+        <input type="button" value="Start" id="Start" onclick="Start()"/>
+        <input type="button" value="Stop" id="Stop" onclick="Stop()"/>
+
+		</center>
+        <center>
+        <iframe src="env.html" frameborder="0" width="180" scrolling="no" height="180"> </iframe>
+        </center>
+	</body>
+</html>

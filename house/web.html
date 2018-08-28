@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>智慧农场</title>
+	<style type="text/css">
+	</style>
+	<script>
+		var start = 0;
+		function GetImage()
+		{
+			if ( start ){
+				var xmlhttp;
+				var url = "/image" + new Date().getTime();
+				var img = document.getElementById("img");
+				img.src = url;
+				setTimeout("GetImage()", 500);
+			}
+		}
+
+		function Start(){
+			start = 1;
+			document.getElementById("Start").disabled = true;
+			document.getElementById("Stop").disabled = false;
+			GetImage();
+		}
+		function Stop(){
+			start = 0;
+			document.getElementById("Start").disabled = false;
+			document.getElementById("Stop").disabled = true;		
+		}
+
+		function GetImg1(){
+			
+			var url = "/img1";
+			var img1 = document.getElementById("img1");
+			img1.src = url;
+		}
+		function GetImg2(){
+			var url = "/img2";
+			var img2 = document.getElementById("img2");
+			img2.src = url;
+		}
+		function GetImg3(){
+			var url = "/img3";
+			var img3 = document.getElementById("img3");
+			img3.src = url;
+		}
+
+		function DevCtl(cmd) {
+			var xmlhttp;
+			if (window.XMLHttpRequest) 
+			{
+	                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                                xmlhttp=new XMLHttpRequest();
+                        } 
+			else 
+			{
+                                // code for IE6, IE5
+                                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                        }
+			xmlhttp.onreadystatechange = function() 
+			{
+       		        	if (xmlhttp.readyState==4 && xmlhttp.status==200) 
+				{
+                		        // document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+                        	}
+			}
+                        var parm = cmd;
+                        xmlhttp.open("POST","/web.html?DevCtl",true);
+                        xmlhttp.send(parm);          
+		}
+		
+		function GetEnv(){
+			var xmlhttp;
+			var buf;
+			
+			var tem = document.getElementById("tem");
+			var hum = document.getElementById("hum");
+			var lig = document.getElementById("lig");
+			
+			if (window.XMLHttpRequest) 
+			{
+	                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                                xmlhttp=new XMLHttpRequest();
+                        } 
+			else 
+			{
+                                // code for IE6, IE5
+                                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                        }
+			xmlhttp.onreadystatechange = function() 
+			{	
+       		        	if (xmlhttp.readyState==4 && xmlhttp.status==200) 
+				{
+                		        buf = xmlhttp.responseText;
+					var strs= new Array();
+					strs = buf.split(" ");				
+					tem.value = strs[0];
+					hum.value = strs[1];
+					lig.value = strs[2];	
+                        	}
+			
+			}
+                        xmlhttp.open("POST","get=",true);
+                        xmlhttp.send(); 						
+		}
+	</script>
+</head>
+<body align="center" bgcolor="#5F9EA0">
+	<br />
+
+	<table width="500" border="1px" bgcolor="#CDC1C5" align="center">
+		<tr><font size=5px" color="#FFFF00">环境信息:</font></tr>
+		<tr>
+			<td>温度(℃)：</td>
+			<td><input type="text" id="tem" value="" readOnly="true"></td>
+		</tr>
+		<tr>
+			<td>湿度(g/m3)：</td>
+			<td><input type="text" id="hum" value="" readOnly="true"></td>
+		</tr>
+		<tr>
+			<td>光照(Lux)：</td>
+			<td><input type="text" id="lig" value="" readOnly="true"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="button" value="刷新" onclick="GetEnv()"/></td>
+		</tr>
+	</table>
+	<br />
+
+	<font size=5px" color="##FFFF00">蜂鸣器:</font>
+	<div style="margin:0 auto;border:#B36 1px solid;background-color:#AEEEEE;width:500px;height:200px">
+		<img src="/img1" id="img1" width="100px" height="100px">
+		<br /><br /><br /><br />
+		<input type="button" value="鸣笛" onclick="DevCtl('buz=on')"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="button" value="关闭" onclick="DevCtl('buz=off')"/>
+							
+	</div>
+	<br />
+
+	<font size=5px" color="#FFFF00">风&nbsp;&nbsp;扇:</font>
+	<div style="margin:0 auto;border:#B36 1px solid;background-color:#7CFC00;width:500px;height:200px">
+		<img src="/img2" id="img2" width="100px" height="100px">
+		<br /><br /><br /><br />
+		<input type="button" value="ON" onclick="DevCtl('fen=on')"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="button" value="OFF" onclick="DevCtl('fen=off')"/>
+	</div>
+	<br />
+
+	<font size=5px" color="#00008B">LED灯光:</font>
+	<div style="margin:0 auto;border:#B36 1px solid;background-color:#EEC900;width:500px;height:200px">
+		<img src="/img3" id="img3" width="100px" height="100px">
+		<br /><br /><br /><br />
+		<input type="button" value="开灯" onclick="DevCtl('led=on')"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="button" value="关灯" onclick="DevCtl('led=off')"/>
+	</div>
+	<br />
+	<font size=5px" color="#00008B">摄像头:</font>
+	<div style="margin:0 auto;border:#B36 1px solid;background-color:#00688B;width:500px;height:300px">
+		<img name="img" id="img"  width="300px" height="250px">
+		<br /><br />
+		<input type="button" value="Start" id="Start" onclick="Start()" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="button" value="Stop"  id="Stop"  onclick="Stop()" disabled="disabled"/>
+	</div>
+</body>
+</html>
