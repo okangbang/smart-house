@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">smart_client</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_two">TwoActivity</string>
+    <string name="title_activity_getxinxi">GetxinxiActivity</string>
+    <string name="title_activity_shipin">ShipinActivity</string>
+    <string name="title_activity_wendu">WenduActivity</string>
+    <string name="title_activity_sshidu">SshiduActivity</string>
+    <string name="title_activity_fengshan">FengshanActivity</string>
+    <string name="title_activity_fengmingqi">FengmingqiActivity</string>
+    <string name="title_activity_guangzhao">GuangzhaoActivity</string>
+    <string name="title_activity_three">THREEActivity</string>
+    <string name="title_activity_thr">ThrActivity</string>
+
+</resources>

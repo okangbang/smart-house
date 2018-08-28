@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/nuan">
+
+    <Button
+        android:id="@+id/huijia"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/textView4"
+        android:layout_toRightOf="@+id/textView2"
+        android:background="#eeffddb0"
+        android:text="开3" />
+
+    <Button
+        android:id="@+id/zaijia"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/textView1"
+        android:layout_toRightOf="@+id/textView2"
+        android:background="#eeffddb0"
+        android:text="开1" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/lijia"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_marginBottom="41dp"
+        android:background="#ffffddb0"
+        android:text="在家模式" />
+
+    <Button
+        android:id="@+id/lijia"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/huijia"
+        android:layout_alignLeft="@+id/huijia"
+        android:layout_marginBottom="49dp"
+        android:background="#eeffddb0"
+        android:text="开2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:layout_marginLeft="75dp"
+        android:background="#eeffddb0"
+        android:text="离家模式" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="46dp"
+        android:layout_toLeftOf="@+id/baojin"
+        android:background="#88ffddb0"
+        android:text="报警模式" />
+
+    <Button
+        android:id="@+id/baojin"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/huijia"
+        android:layout_alignTop="@+id/textView4"
+        android:background="#eeffddb0"
+        android:text="开4" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/huijia"
+        android:background="#aaffddb0"
+        android:text="回家模式" />
+
+</RelativeLayout>

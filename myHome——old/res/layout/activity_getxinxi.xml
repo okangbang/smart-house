@@ -1,0 +1,138 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/feng"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".FiveActivity" >
+
+    <Button
+        android:id="@+id/l"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignTop="@+id/liangd"
+        android:layout_toRightOf="@+id/CC"
+        android:text="l" />
+
+    <EditText
+        android:id="@+id/liangd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:text="亮度：" />
+
+    <EditText
+        android:id="@+id/wend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/l"
+        android:layout_marginTop="17dp"
+        android:layout_toLeftOf="@+id/LL"
+        android:ems="10"
+        android:text="温度：" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/w"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignLeft="@+id/l"
+        android:layout_alignTop="@+id/wend"
+        android:text="w" />
+
+    <Button
+        android:id="@+id/LL"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_above="@+id/wend"
+        android:layout_toLeftOf="@+id/c"
+        android:text="L" />
+
+    <Button
+        android:id="@+id/WW"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignTop="@+id/wend"
+        android:layout_toRightOf="@+id/wend"
+        android:text="W" />
+
+    <EditText
+        android:id="@+id/chuangl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/c"
+        android:layout_alignLeft="@+id/dians"
+        android:ems="10"
+        android:text="窗帘：" />
+
+    <EditText
+        android:id="@+id/dians"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/c"
+        android:layout_alignLeft="@+id/liangd"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:text="电视：" />
+
+    <Button
+        android:id="@+id/TT"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/dians"
+        android:layout_alignBottom="@+id/dians"
+        android:layout_toRightOf="@+id/wend"
+        android:text="T" />
+
+    <Button
+        android:id="@+id/CC"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/c"
+        android:layout_alignBottom="@+id/c"
+        android:layout_toRightOf="@+id/chuangl"
+        android:text="C" />
+
+    <Button
+        android:id="@+id/c"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/CC"
+        android:text="c" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chuangl"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:text="显示环境信息" />
+
+    <Button
+        android:id="@+id/t"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/TT"
+        android:layout_alignBottom="@+id/TT"
+        android:layout_alignLeft="@+id/c"
+        android:text="t" />
+
+</RelativeLayout>
